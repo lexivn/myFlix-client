@@ -35,10 +35,12 @@ The 5 Ws
 Design Criteria
 
 User Stories
+
 ● As a user, I want to be able to access information about movies so that I can learn more about movies I’ve watched or am interested in.
 ● As a user, I want to be able to create a profile so I can save data about my favorite movies.
 
 Features & Requirements
+
 The following feature requirements were extracted from the user stories just listed. Please note, your project will only be approved if the following essential feature requirements are implemented in your Achievement project.
 
 Essential Views & Features:
@@ -74,14 +76,17 @@ Actors view
 ● Allows users to view information about different actors
 
 Genre view
+
 ● Returns data about a genre, with a name and description
 ● Displays example movies
 
 Director view
+
 ● Returns data about a director (name, bio, birth year, death year)
 ● Displays example movies from the director
 
 Single Movie view (optional features)
+
 ● Allow users to see which actors star in which movies
 ● Allow users to view more information about different movies, such as the release date and the movie rating
 ● Allow users to access different movie information, such as genre description and director bio, without leaving the view (e.g., tooltips)
@@ -89,14 +94,17 @@ Single Movie view (optional features)
 ● Display a list of related or similar movies
 
 Main view (optional features)
+
 ● Allow users to sort movies based on different criteria Profile, Single Movie, and Main views (optional features)
 ● Allow users to create a “To Watch” list in addition to their “Favorite Movies” list
 
 Wireframes
+
 You can download wireframes for each of the views for your project here:
 ● MYFLIX PROJECT WIREFRAMES (.zip)
 
 Technical Requirements
+
 ● The application must be a single-page application (SPA)
 ● The application must use state routing to navigate between views and share URLs
 ● The application must give users the option to filter movies using a “search” feature
