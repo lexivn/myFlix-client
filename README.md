@@ -90,15 +90,13 @@ Director view
 
 Single Movie view (optional features)
 ● Allow users to see which actors star in which movies
-● Allow users to view more information about different movies, such as the release date and
-the movie rating
-● Allow users to access different movie information, such as genre description and director bio,
-without leaving the view (e.g., tooltips)
+● Allow users to view more information about different movies, such as the release date and the movie rating
+● Allow users to access different movie information, such as genre description and director bio, without leaving the view (e.g., tooltips)
 ● Allow users to share a movie
 ● Display a list of related or similar movies
+
 Main view (optional features)
-● Allow users to sort movies based on different criteria
-Profile, Single Movie, and Main views (optional features)
+● Allow users to sort movies based on different criteria Profile, Single Movie, and Main views (optional features)
 ● Allow users to create a “To Watch” list in addition to their “Favorite Movies” list
 
 Wireframes
@@ -114,5 +112,4 @@ Technical Requirements
 ● The application must use Bootstrap as a UI library for styling and responsiveness
 ● The application must contain function components
 ● The application must be hosted online
-● The application may use React Redux for state management of at least one feature (i.e.,
-filtering movies)
+● The application may use React Redux for state management of at least one feature (i.e., filtering movies)
