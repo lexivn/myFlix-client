@@ -24,31 +24,22 @@ master is known as the MERN (MongoDB, Express, React, and Node.js) stack.
 
 The 5 Ws
 
-1. Who: The users of your myFlix app—movie enthusiasts who enjoy reading information about
-   different movies.
-2. What: A single-page, responsive app with routing, rich interactions, several interface views,
-   and a polished user experience. The client-side developed in this Achievement will support
-   the existing server-side (from Achievement 2) by facilitating user requests and rendering the
+1. Who: The users of your myFlix app—movie enthusiasts who enjoy reading information about different movies.
+2. What: A single-page, responsive app with routing, rich interactions, several interface views, and a polished user experience. The client-side eveloped in this Achievement will support the existing server-side (from Achievement 2) by facilitating user requests and rendering the
    response from the server-side via a number of different interface views.
-3. When: myFlix users will be able to use it whenever they want to read and save information
-   about different movies.
-4. Where: The app will be hosted online. The myFlix app itself is responsive and can therefore be
-   used anywhere and on any device, giving all users the same experience.
-5. Why: Movie enthusiasts like to be able to access information about different movies,
-   whenever they want to. Having the ability to save a list of their favorite movies will ensure
+3. When: myFlix users will be able to use it whenever they want to read and save information about different movies.
+4. Where: The app will be hosted online. The myFlix app itself is responsive and can therefore be used anywhere and on any device, giving all users the same experience.
+5. Why: Movie enthusiasts like to be able to access information about different movies, whenever they want to. Having the ability to save a list of their favorite movies will ensure
    users always have access to the films they want to watch or recommend to their peers.
 
 Design Criteria
 
 User Stories
-● As a user, I want to be able to access information about movies so that I can learn more
-about movies I’ve watched or am interested in.
+● As a user, I want to be able to access information about movies so that I can learn more about movies I’ve watched or am interested in.
 ● As a user, I want to be able to create a profile so I can save data about my favorite movies.
 
 Features & Requirements
-The following feature requirements were extracted from the user stories just listed. Please note, your
-project will only be approved if the following essential feature requirements are implemented in your
-Achievement project.
+The following feature requirements were extracted from the user stories just listed. Please note, your project will only be approved if the following essential feature requirements are implemented in your Achievement project.
 
 Essential Views & Features:
 
@@ -70,6 +61,7 @@ Signup view
 ● Allows new users to register (username, password, email, date of birth)
 
 Profile view
+
 ● Displays user registration details
 ● Allows users to update their info (username, password, email, date of birth)
 ● Displays favorite movies
@@ -78,6 +70,7 @@ Profile view
 
 Optional Views & Features:
 Actors view
+
 ● Allows users to view information about different actors
 
 Genre view
