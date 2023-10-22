@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Importing a component into another (BookCard -> MainView)
 import { MovieCard } from "../movie-card/movie-card";
@@ -13,6 +13,15 @@ export const MainView = () => {
   // "selectedBook" as a flag.
 
   const [selectedMovie, setSelectedMovie] = useState(null);
+
+  // Implementing Loading Data from API
+  useEffect(() => {
+    fetch("https://moviesflix-99590597ee12.herokuapp.com/movies")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("movies from api: ", data);        
+      });
+  }, []);
 
   if (selectedMovie) {
     return (
