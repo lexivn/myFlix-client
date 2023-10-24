@@ -19,7 +19,12 @@ export const MainView = () => {
     fetch("https://moviesflix-99590597ee12.herokuapp.com/movies")
       .then((response) => response.json())
       .then((data) => {
-        console.log("movies from api: ", data);        
+        console.log("movies from api: ", data);
+        const moviesFromApi = data.map((doc) => {
+          // map is reppresenting the index
+          return doc;
+        });
+        setMovies(moviesFromApi);
       });
   }, []);
 
@@ -40,7 +45,7 @@ export const MainView = () => {
     <div>
       {movies.map((movie) => (
         <MovieCard
-          key={movie.id}
+          key={movie._id}
           movie={movie}
           // This event handling is added to the BookCard component
           onMovieClick={(newSelectedMovie) => {
