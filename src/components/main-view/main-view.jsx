@@ -6,17 +6,28 @@ import { MovieCard } from "../movie-card/movie-card";
 // Importain BookView component into the MainView
 import { MovieView } from "../movie-view/movie-view";
 
+import { LoginView } from "../login-view/login-view";
+
+import { SignupView } from "../singup-view/signup-view";
+
 export const MainView = () => {
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedToken = localStorage.getItem("token");
+  const [user, setUser] = useState(storedUser ? storedUser : null);
+  const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
-
-  // To determine whether to render a specific part of the UI (BookView) in the MainView component, you’ll add a new state
-  // "selectedBook" as a flag.
-
+  // To determine whether to render a specific part of the UI (MovieView) in the MainView component, you’ll add a new state
+  // "selectedMovie" as a flag.
   const [selectedMovie, setSelectedMovie] = useState(null);
 
-  // Implementing Loading Data from API
   useEffect(() => {
-    fetch("https://moviesflix-99590597ee12.herokuapp.com/movies")
+    if (!token) {
+      return;
+    }
+    // Implementing Loading Data from API
+    fetch("https://moviesflix-99590597ee12.herokuapp.com/movies", {
+      headers: { Authorization: `Bearer ${token}` }
+    })
       .then((response) => response.json())
       .then((data) => {
         console.log("movies from api: ", data);
@@ -26,7 +37,23 @@ export const MainView = () => {
         });
         setMovies(moviesFromApi);
       });
-  }, []);
+  }, [token]);
+
+  // Need to be sure if this code goes here
+  if (!user) {
+    return (
+      <>
+        <LoginView
+          onLoggedIn={(user, token) => {
+            setUser(user);
+            setToken(token);
+          }}
+        />
+        or
+        <SignupView />
+      </>
+    );
+  }
 
   if (selectedMovie) {
     return (
@@ -43,16 +70,30 @@ export const MainView = () => {
 
   return (
     <div>
-      {movies.map((movie) => (
-        <MovieCard
-          key={movie._id}
-          movie={movie}
-          // This event handling is added to the BookCard component
-          onMovieClick={(newSelectedMovie) => {
-            setSelectedMovie(newSelectedMovie);
+      <div>
+        {movies.map((movie) => (
+          <MovieCard
+            key={movie._id}
+            movie={movie}
+            // This event handling is added to the BookCard component
+            onMovieClick={(newSelectedMovie) => {
+              setSelectedMovie(newSelectedMovie);
+            }}
+          />
+        ))}
+      </div>
+
+      <div>
+        <button
+          onClick={() => {
+            setUser(null);
+            setToken(null);
+            localStorage.clear();
           }}
-        />
-      ))}
+        >
+          Logout
+        </button>
+      </div>
     </div>
   );
 };
