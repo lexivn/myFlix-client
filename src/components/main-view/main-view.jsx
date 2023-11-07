@@ -108,7 +108,7 @@ export const MainView = () => {
           <SignupView />
         </Col>
       ) : selectedMovie ? (
-        <Col md={8} style={{ border: "1px solid black" }}>
+        <Col md={8} /*style={{ border: "1px solid black" }}*/>
           <MovieView
             movie={selectedMovie}
             onBackClick={() => setSelectedMovie(null)}
@@ -119,14 +119,15 @@ export const MainView = () => {
       ) : (
         <>
           {movies.map((movie) => (
-            <MovieCard
-              key={movie._id}
+            <Col className="mb-3" key={movie._id} md={3}>
+            <MovieCard              
               movie={movie}
               // This event handling is added to the BookCard component
               onMovieClick={(newSelectedMovie) => {
                 setSelectedMovie(newSelectedMovie);
               }}
             />
+            </Col>
           ))}
 
           <div>

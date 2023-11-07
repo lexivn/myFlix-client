@@ -2,17 +2,29 @@
 
 // Here We import the PropType library
 import PropType from "prop-types";
+import { Button, Card } from "react-bootstrap";
 
 // Destructure of the props
 export const MovieCard = ({ movie, onMovieClick }) => {
   return (
-    <div
-      onClick={() => {
-        onMovieClick(movie);
-      }}
-    >
-      {movie.Title}
-    </div>
+    // <div
+    //   onClick={() => {
+    //     onMovieClick(movie);
+    //   }}
+    // >
+    //   {movie.Title}
+    //   {movie.Director.Name}
+    // </div>
+    <Card className="h-100">
+      <Card.Img variant="top" src={movie.ImagePath} />
+      <Card.Body>
+      <Card.Title>{movie.Title}</Card.Title>
+      <Card.Text>{movie.Director.Name}</Card.Text>
+      <Button onClick={() => onMovieClick(movie)}  variant="link">
+        Open
+      </Button>
+      </Card.Body>
+    </Card>
   );
 };
 //  The props object is being destrucured
