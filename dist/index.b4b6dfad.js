@@ -42056,7 +42056,7 @@ const SignupView = ()=>{
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
-                controlId: "formPassqord",
+                controlId: "formPassword",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
                         children: "Password"
@@ -42068,7 +42068,7 @@ const SignupView = ()=>{
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
                         type: "password",
                         value: password,
-                        onChange: (e)=>setUsername(e.target.value),
+                        onChange: (e)=>setPassword(e.target.value),
                         required: true,
                         minLength: 5,
                         placeholder: "Password"
@@ -42096,7 +42096,7 @@ const SignupView = ()=>{
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
                         type: "email",
                         value: email,
-                        onChange: (e)=>setUsername(e.target.value),
+                        onChange: (e)=>setEmail(e.target.value),
                         required: true,
                         placeholder: "Email"
                     }, void 0, false, {
@@ -42123,7 +42123,7 @@ const SignupView = ()=>{
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
                         type: "date",
                         value: birthday,
-                        onChange: (e)=>setUsername(e.target.value),
+                        onChange: (e)=>setBirthday(e.target.value),
                         required: true,
                         minLength: 5,
                         placeholder: "Birthday"
