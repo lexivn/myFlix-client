@@ -1,11 +1,13 @@
 // There two props in this code: One object(book) and one function(onBookClick)
 
 // Here We import the PropType library
+import React from "react";
 import PropType from "prop-types";
 import { Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 // Destructure of the props
-export const MovieCard = ({ movie, onMovieClick }) => {
+export const MovieCard = ({ movie }) => {
   return (
     // <div
     //   onClick={() => {
@@ -18,11 +20,11 @@ export const MovieCard = ({ movie, onMovieClick }) => {
     <Card className="h-100">
       <Card.Img variant="top" src={movie.ImagePath} />
       <Card.Body>
-      <Card.Title>{movie.Title}</Card.Title>
-      <Card.Text>{movie.Director.Name}</Card.Text>
-      <Button onClick={() => onMovieClick(movie)}  variant="link">
-        Open
-      </Button>
+        <Card.Title>{movie.Title}</Card.Title>
+        <Card.Text>{movie.Director.Name}</Card.Text>
+        <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
+          <Button variant="link">Open</Button>
+        </Link>
       </Card.Body>
     </Card>
   );
@@ -38,6 +40,5 @@ MovieCard.propTypes = {
     Title: PropType.string.isRequired, // propType is working
     ImagePath: PropType.string.isRequired, // propType is working
     author: PropType.string // Why this propType is not working?
-  }).isRequired,
-  onMovieClick: PropType.func.isRequired
+  }).isRequired 
 };
