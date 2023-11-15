@@ -30,6 +30,7 @@ export const LoginView = ({ onLoggedIn }) => {
           // Data storage across browser sessions
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);
+          localStorage.setItem("userId", data.user._id);
           //
           onLoggedIn(data.user, data.token);
         } else {
