@@ -46,6 +46,8 @@ export const MainView = () => {
     user={user}
     onLoggedOut={() => {
       setUser(null);
+      setToken(null);
+      localStorage.clear();
     }}
     />
       <Row className="justify-content-md-center">
@@ -117,18 +119,7 @@ export const MainView = () => {
                       <Col className="mb-4" key={movie._id} md={3}>
                         <MovieCard movie={movie} />
                       </Col>
-                    ))}
-                    <div>
-                      <button
-                        onClick={() => {
-                          setUser(null);
-                          setToken(null);
-                          localStorage.clear();
-                        }}
-                      >
-                        Logout
-                      </button>
-                    </div>
+                    ))}                    
                   </>
                 )}
               </>
