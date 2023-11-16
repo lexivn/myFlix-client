@@ -19,18 +19,17 @@ export const UserProfile = () => {
         setUsers(data)
         const user = users.find(x => x._id === localStorage.getItem("userId"))
         setfavoriteMovies(user.FavoriteMovies);
-        
-      });
-  },[userData, users]
 
-  );
+      });
+  }, [userData, users]);
+
   return (
     <>
-     {!favoriteMovies ?<>No  favs</>: favoriteMovies.map((movie) => (
-                      
-                        <MovieCard movie={movie} />
-                      
-                    ))}
+      {!favoriteMovies ? <>No  favs</> : favoriteMovies.map((movie) => (
+
+        <MovieCard movie={movie} />
+
+      ))}
     </>
 
   )
