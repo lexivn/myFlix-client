@@ -7,7 +7,7 @@ import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 // Destructure of the props
-export const MovieCard = ({ movie }) => {
+export const MovieCard = ({ movie }) => {  
   return (
     // <div
     //   onClick={() => {

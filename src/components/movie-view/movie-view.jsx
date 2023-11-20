@@ -1,10 +1,11 @@
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./movie-view.scss";
 
 export const MovieView = ({ movies }) => {
   const { movieId } = useParams(); 
   const movie = movies.find((b) => b._id === movieId);
+  const navigate = useNavigate();
  
   return (
     <div>
@@ -35,7 +36,7 @@ export const MovieView = ({ movies }) => {
         <span>Bio: </span>
         <span>{movie.Director.Bio}</span>
       </div>
-      <Link to={`/`}>
+      <Link to={navigate(-1)}>
         <button className="back-button" style={{ cursor: "pointer" }}>Back</button>
       </Link>
     </div>
