@@ -29,11 +29,38 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
   //     });
 
   // }, [users, user]);
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const data = {
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthday: birthday
+    };
+
+    fetch("https://moviesflix-99590597ee12.herokuapp.com/users"+"/"+user.Username, {
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: { Authorization: `Bearer ${token}` }
+    }).then((response) => {
+      if (response.ok) {
+        alert("Profile updated successfully");
+        setPassword(response.json().Password);
+        setBirthday(response.json().Birthday);
+        setEmail(response.json().Email);
+        //window.location.reload();
+      } else {
+        alert("Profile updated failed");
+      }
+    });
+  };
 
   return (
     <Container>
       <Row>
-      <Form>
+      <Form onSubmit={handleSubmit}>
       <Form.Group controlId="formUsername">
         <Form.Label>Username</Form.Label>
         <Form.Control
@@ -43,6 +70,7 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
         required
         minLength={5}
         placeholder="Username"
+        disabled
         />
       </Form.Group>
 
