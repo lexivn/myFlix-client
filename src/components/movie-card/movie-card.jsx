@@ -9,14 +9,6 @@ import { Link } from "react-router-dom";
 // Destructure of the props
 export const MovieCard = ({ movie }) => {  
   return (
-    // <div
-    //   onClick={() => {
-    //     onMovieClick(movie);
-    //   }}
-    // >
-    //   {movie.Title}
-    //   {movie.Director.Name}
-    // </div>
     <Card className="h-100">
       <Card.Img variant="top" src={movie.ImagePath} />
       <Card.Body>

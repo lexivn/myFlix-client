@@ -14,12 +14,14 @@ import { ProfileView } from "../profile-view/profile-view";
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
+
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
+
   const [movies, setMovies] = useState([]);
   // To determine whether to render a specific part of the UI (MovieView) in the MainView component, you’ll add a new state
   // "selectedMovie" as a flag.
-  const [selectedMovie, setSelectedMovie] = useState(null);
+  // const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
     if (!token) {
@@ -31,7 +33,8 @@ export const MainView = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("movies from api: ", data);
+        // Debug
+        console.log("Movies from api: ", data);
         const moviesFromApi = data.map((doc) => {
           // map is reppresenting the index
           return doc;
@@ -45,6 +48,7 @@ export const MainView = () => {
     <BrowserRouter>
       <NavigationBar
         user={user}
+        movies={movies}
         onLoggedOut={() => {
           setUser(null);
           setToken(null);
