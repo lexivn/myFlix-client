@@ -9,16 +9,19 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { ProfileView } from "../profile-view/profile-view";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
+
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
+
   const [movies, setMovies] = useState([]);
   // To determine whether to render a specific part of the UI (MovieView) in the MainView component, you’ll add a new state
   // "selectedMovie" as a flag.
-  const [selectedMovie, setSelectedMovie] = useState(null);
+  // const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
     if (!token) {
@@ -30,7 +33,8 @@ export const MainView = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("movies from api: ", data);
+        // Debug
+        console.log("Movies from api: ", data);
         const moviesFromApi = data.map((doc) => {
           // map is reppresenting the index
           return doc;
@@ -42,12 +46,15 @@ export const MainView = () => {
 
   return (
     <BrowserRouter>
-    <NavigationBar
-    user={user}
-    onLoggedOut={() => {
-      setUser(null);
-    }}
-    />
+      <NavigationBar
+        user={user}
+        movies={movies}
+        onLoggedOut={() => {
+          setUser(null);
+          setToken(null);
+          localStorage.clear();
+        }}
+      />
       <Row className="justify-content-md-center">
         <Routes>
           <Route
@@ -85,6 +92,19 @@ export const MainView = () => {
               </>
             }
           />
+          <Route
+            path="/profile"
+            element={
+              <>               
+                <ProfileView
+                user={user}
+                token={token}                
+                movies={movies}
+                setUser={setUser}   // Clarify this
+                />
+              </>
+            }
+          />
 
           <Route
             path="/movies/:movieId"
@@ -118,17 +138,6 @@ export const MainView = () => {
                         <MovieCard movie={movie} />
                       </Col>
                     ))}
-                    <div>
-                      <button
-                        onClick={() => {
-                          setUser(null);
-                          setToken(null);
-                          localStorage.clear();
-                        }}
-                      >
-                        Logout
-                      </button>
-                    </div>
                   </>
                 )}
               </>
