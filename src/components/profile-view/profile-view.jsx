@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router";
 import { MovieCard } from "../movie-card/movie-card";
 import { Row, Col, Container, Form, Button } from "react-bootstrap";
 
@@ -24,19 +23,29 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
       Birthday: birthday
     };
 
-    fetch("https://moviesflix-99590597ee12.herokuapp.com/users" + "/" + user.Username, {
+    fetch(`https://moviesflix-99590597ee12.herokuapp.com/users/${user.Username}`, {
+    //+ "/" + user.Username, {
       method: "PUT",
       body: JSON.stringify(data),
-      headers: { Authorization: `Bearer ${token}` }
+      headers: {
+        "Content-Type": "application/json",
+         Authorization: `Bearer ${token}` 
+        }
     }).then((response) => {
-      if (response.ok) {
+      if (response.ok) {        
         alert("Profile updated successfully");
-        setPassword(response.json().Password);
-        setBirthday(response.json().Birthday);
-        setEmail(response.json().Email);
+        return response.json();
+        // setPassword(response.json().Password);
+        // setBirthday(response.json().Birthday);
+        // setEmail(response.json().Email);
         //window.location.reload();
       } else {
         alert("Profile updated failed");
+      }
+    }).then((data) => {
+      if (data) {
+        localStorage.setItem("user", JSON.stringify(data));
+        setUser(data);
       }
     });
   };
