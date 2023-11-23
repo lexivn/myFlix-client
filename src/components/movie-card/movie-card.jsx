@@ -7,7 +7,11 @@ import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 // Destructure of the props
-export const MovieCard = ({ movie }) => {  
+export const MovieCard = ({ movie }) => { 
+  const handleAddFavourite =() => {
+
+  };
+
   return (
     <Card className="h-100">
       <Card.Img variant="top" src={movie.ImagePath} />
@@ -17,6 +21,7 @@ export const MovieCard = ({ movie }) => {
         <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
           <Button variant="link">Open</Button>
         </Link>
+        <Button variant="link">Add to my List</Button>
       </Card.Body>
     </Card>
   );
