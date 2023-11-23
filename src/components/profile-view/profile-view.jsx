@@ -8,7 +8,7 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
   const [password, setPassword] = useState(user.Password);
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthday] = useState(user.Birthday);
-  
+
   // Get all the movies from the favourite list of the user. 
   let favoriteMovies = movies.filter((m) => user.FavoriteMovies.includes(m._id));
   console.log(favoriteMovies);
@@ -27,15 +27,14 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
     };
 
     fetch(`https://moviesflix-99590597ee12.herokuapp.com/users/${user.Username}`, {
-    //+ "/" + user.Username, {
       method: "PUT",
-      body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
-         Authorization: `Bearer ${token}` 
-        }
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify(data)
     }).then((response) => {
-      if (response.ok) {        
+      if (response.ok) {
         alert("Profile updated successfully");
         return response.json();
         // setPassword(response.json().Password);
@@ -52,22 +51,38 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
         setUser(data);
       }
     })
-    .catch((error) => {
-      console.log(error);
-    })
+      .catch((error) => {
+        console.log(error);
+      })
   };
 
-  // ADD MOVIE TO THE FAVOURITE LIST
-  
-  // REMOVE MOVIE FROM THE FAVOURITE LIST
+  // DELETE USER ACCOUNT
+  const deleteAccount = () => {
+
+    fetch(`https://moviesflix-99590597ee12.herokuapp.com/users/${user.Username}`, {
+      method: "DELETE",
+      headers: {
+        //"Content-Type": "Application/json",
+        Authorization: `Bearer ${token}`,
+      }
+    }).then((response) => {
+      console.log(response);
+      if (response.ok) {
+        setUser(null);
+        localStorage.clear();
+        alert("You account has been deleted sucessfully");
+        window.location.replace("/login");
+      } else {
+        alert("Something went wrong!");
+      }
+    }).catch((error) => {
+      console.log(error);
+    });
+  };
 
   return (
     <Container>
       <Row>
-        <Col>
-        <p>User: (user.Username)</p>
-        <p>Email: (user.Email)</p>
-        </Col>
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="formUsername">
             <Form.Label>Username</Form.Label>
@@ -90,7 +105,7 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
               onChange={(e) => setPassword(e.target.value)}
               required
               minLength={5}
-              placeholder="Password"
+              placeholder="password"
             />
           </Form.Group>
 
@@ -116,12 +131,17 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
               placeholder="Birthday"
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
+          </Form>       
       </Row>
-      <Row className="justify-content-md-center align-items-center">
+
+      <Row className="mt-3">
+          <Col md={5}>
+            <Button className="text-light" onClick={handleSubmit} variant="primary" type="submit">Update</Button>         
+            <Button className="mx-3 text-light" onClick={deleteAccount} variant="danger" >Delete Account</Button>
+          </Col>
+        </Row>
+
+      <Row className="mt-3 justify-content-md-center align-items-center">
         {
           favoriteMovies.map((movie) => {
             return (
@@ -133,7 +153,6 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
         }
       </Row>
     </Container>
-
 
   )
 }
