@@ -8,11 +8,14 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
   const [password, setPassword] = useState(user.Password);
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthday] = useState(user.Birthday);
-
+  
+  // Get all the movies from the favourite list of the user. 
   let favoriteMovies = movies.filter((m) => user.FavoriteMovies.includes(m._id));
   console.log(favoriteMovies);
 
-  // Updating the User Profile
+  // SHOW USER INFO
+
+  // UPDATE THE USER PROFILE
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -44,15 +47,27 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
       }
     }).then((data) => {
       if (data) {
+        // JSON.stringify converts into string the "data" js object.
         localStorage.setItem("user", JSON.stringify(data));
         setUser(data);
       }
-    });
+    })
+    .catch((error) => {
+      console.log(error);
+    })
   };
+
+  // ADD MOVIE TO THE FAVOURITE LIST
+  
+  // REMOVE MOVIE FROM THE FAVOURITE LIST
 
   return (
     <Container>
       <Row>
+        <Col>
+        <p>User: (user.Username)</p>
+        <p>Email: (user.Email)</p>
+        </Col>
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="formUsername">
             <Form.Label>Username</Form.Label>
