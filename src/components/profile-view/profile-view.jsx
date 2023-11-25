@@ -13,10 +13,8 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
   let favoriteMovies = movies.filter((m) => user.FavoriteMovies.includes(m._id));
   console.log(favoriteMovies);
 
-  // SHOW USER INFO
-
   // UPDATE THE USER PROFILE
-  const handleSubmit = (event) => {
+  const userUpdate = (event) => {
     event.preventDefault();
 
     const data = {
@@ -70,7 +68,7 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
       if (response.ok) {
         setUser(null);
         localStorage.clear();
-        alert("You account has been deleted sucessfully");
+        alert("Your account has been deleted sucessfully");
         window.location.replace("/login");
       } else {
         alert("Something went wrong!");
@@ -83,7 +81,7 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
   return (
     <Container>
       <Row>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={userUpdate}>
           <Form.Group controlId="formUsername">
             <Form.Label>Username</Form.Label>
             <Form.Control
@@ -136,7 +134,7 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
 
       <Row className="mt-3">
           <Col md={5}>
-            <Button className="text-light" onClick={handleSubmit} variant="primary" type="submit">Update</Button>         
+            <Button className="text-light" onClick={userUpdate} variant="primary" type="submit">Update</Button>         
             <Button className="mx-3 text-light" onClick={deleteAccount} variant="danger" >Delete Account</Button>
           </Col>
         </Row>

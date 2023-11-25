@@ -40,7 +40,6 @@ export const MainView = () => {
           return doc;
         });
         setMovies(moviesFromApi);
-
       });
   }, [token]);
 
@@ -135,7 +134,12 @@ export const MainView = () => {
                   <>
                     {movies.map((movie) => (
                       <Col className="mb-4" key={movie._id} md={3}>
-                        <MovieCard movie={movie} />
+                        <MovieCard
+                        user={user}
+                        token={token} 
+                        movie={movie}
+                        setUser={setUser}                        
+                        />
                       </Col>
                     ))}
                   </>
