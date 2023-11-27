@@ -40,6 +40,7 @@ export const MainView = () => {
           return doc;
         });
         setMovies(moviesFromApi);
+
       });
   }, [token]);
 
@@ -94,12 +95,12 @@ export const MainView = () => {
           <Route
             path="/profile"
             element={
-              <>               
+              <>
                 <ProfileView
-                user={user}
-                token={token}                
-                movies={movies}
-                setUser={setUser}   // Clarify this
+                  user={user}
+                  token={token}
+                  movies={movies}
+                  setUser={setUser}   // Clarify this
                 />
               </>
             }
@@ -135,10 +136,10 @@ export const MainView = () => {
                     {movies.map((movie) => (
                       <Col className="mb-4" key={movie._id} md={3}>
                         <MovieCard
-                        user={user}
-                        token={token} 
-                        movie={movie}
-                        setUser={setUser}                        
+                          movie={movie}
+                          user={user}
+                          token={token}
+                          setUser={setUser}
                         />
                       </Col>
                     ))}

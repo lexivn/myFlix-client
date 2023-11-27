@@ -6,53 +6,13 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 // Destructure of the props
-export const MovieCard = ({ token, movie }) => {
+export const MovieCard = ({ user, token, movie }) => {
 
-  // Verify if the movie object is the "favoriteMovies List" coming from Profile or the "Movie List" coming from "/"
-  const [isFavoriteMovies, setIsFavoriteMovies] = useState(false);
-  const [user, setUser] = useState();
-
-  useEffect(() => {
-
-    // console.log(user);
-    // if (user.FavoriteMovies && user.FavoriteMovies.includes(movie._id)) {
-    //   setIsFavoriteMovies(true);
-    // }
-
-
-    fetch(`https://moviesflix-99590597ee12.herokuapp.com/users/${localStorage.getItem("Username")}`, {
-      method: "GET", headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
-    }).then((response) => {
-      if (response.ok) {
-
-        // console.log(user.Username);
-        // console.log(response);
-        return response.json();
-      } else {
-        console.log("Failed to get user");
-      }
-    })
-      .then((data) => {
-        setUser(data);    // Update the user object with the new movie list
-        console.log(user);
-        if (user.FavoriteMovies && user.FavoriteMovies.includes(movie._id)) {
-          setIsFavoriteMovies(true);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-
-  }, [user]);
-
+function isFav() {
+  return  user.FavoriteMovies.includes(movie._id)
+}
   // ADD MOVIE TO FAVORITE LIST
   const addToFavoriteList = () => {
-    // console.log(typeof (user));
-    // console.log(user);
-    // console.log(movie);
-    // console.log(movie._id);
-    // console.log(localStorage.getItem("token"));
-
     fetch(`https://moviesflix-99590597ee12.herokuapp.com/users/${user.Username}/movies/${movie._id}`, {
       method: "POST", headers: { Authorization: `Bearer ${token}` }
     }).then((response) => {
@@ -119,8 +79,8 @@ export const MovieCard = ({ token, movie }) => {
         <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
           <Button variant="link">Open</Button>
         </Link>
-        <>
-          {movie.Featured ? (
+        <>{
+          isFav() ? (
             <Button onClick={removeFromFavoriteList} variant="link">Delete from List</Button>
 
           ) : (
