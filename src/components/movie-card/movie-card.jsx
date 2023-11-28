@@ -6,11 +6,12 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 // Destructure of the props
-export const MovieCard = ({ user, token, movie }) => {
+export const MovieCard = ({ user, token, movie, setUser = () => { } }) => {
 
-function isFav() {
-  return  user.FavoriteMovies.includes(movie._id)
-}
+  function isFav() {
+    return user.FavoriteMovies.includes(movie._id)
+  }
+
   // ADD MOVIE TO FAVORITE LIST
   const addToFavoriteList = () => {
     fetch(`https://moviesflix-99590597ee12.herokuapp.com/users/${user.Username}/movies/${movie._id}`, {
@@ -26,15 +27,10 @@ function isFav() {
       }
     })
       .then((data) => {
-        localStorage.setItem("user", JSON.stringify(data));   //   Update the LocalStorage user information
-        setUser(data);    // Update the user object with the new movie list
-        //setIsFavoriteMovies(true);
-        fetch(`https://moviesflix-99590597ee12.herokuapp.com/movie/setFavorite/${movie._id}/true`, {
-          method: "PUT", headers: { Authorization: `Bearer ${token}` }
-        }).then(() => {
-
-        })
+        localStorage.setItem("user", JSON.stringify(data));   // Update the LocalStorage user information
+        setUser(data);                                        // Update the user object with the new movie list
         console.log(movie);
+        location.reload();
       })
       .catch((error) => {
         console.log(error);
@@ -43,11 +39,6 @@ function isFav() {
 
   // REMOVE MOVIE FROM FAVORITE LIST
   const removeFromFavoriteList = () => {
-    // console.log(typeof (user));
-    // console.log(user);
-    // console.log(movie);
-    // console.log(movie._id);
-    // console.log(localStorage.getItem("token"));
 
     fetch(`https://moviesflix-99590597ee12.herokuapp.com/users/${user.Username}/movies/${movie._id}`, {
       method: "DELETE", headers: { Authorization: `Bearer ${token}` }
@@ -62,8 +53,8 @@ function isFav() {
       }
     })
       .then((data) => {
-        localStorage.setItem("user", JSON.stringify(data));   //   Update the LocalStorage user information
-        setUser(data);    // Update the user object with the new movie list
+        localStorage.setItem("user", JSON.stringify(data));   // Update the LocalStorage user information
+        setUser(data);                                        // Update the user object with the new movie list
       })
       .catch((error) => {
         console.log(error);
@@ -87,7 +78,7 @@ function isFav() {
             <Button onClick={addToFavoriteList} variant="link">Add to my List</Button>
 
           )
-          }
+        }
         </>
 
       </Card.Body>

@@ -9,6 +9,7 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthday] = useState(user.Birthday);
 
+
   // Get all the movies from the favourite list of the user. 
   let favoriteMovies = movies.filter((m) => user.FavoriteMovies.includes(m._id));
   console.log(favoriteMovies);
@@ -35,10 +36,7 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
       if (response.ok) {
         alert("Profile updated successfully");
         return response.json();
-        // setPassword(response.json().Password);
-        // setBirthday(response.json().Birthday);
-        // setEmail(response.json().Email);
-        //window.location.reload();
+        
       } else {
         alert("Profile updated failed");
       }
