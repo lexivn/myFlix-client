@@ -95,12 +95,12 @@ export const MainView = () => {
           <Route
             path="/profile"
             element={
-              <>               
+              <>
                 <ProfileView
-                user={user}
-                token={token}                
-                movies={movies}
-                setUser={setUser}   // Clarify this
+                  user={user}
+                  token={token}
+                  movies={movies}
+                  setUser={setUser}
                 />
               </>
             }
@@ -135,7 +135,12 @@ export const MainView = () => {
                   <>
                     {movies.map((movie) => (
                       <Col className="mb-4" key={movie._id} md={3}>
-                        <MovieCard movie={movie} />
+                        <MovieCard
+                          movie={movie}
+                          user={user}
+                          token={token}
+                          setUser={setUser}
+                        />
                       </Col>
                     ))}
                   </>

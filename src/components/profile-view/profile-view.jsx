@@ -9,14 +9,13 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthday] = useState(user.Birthday);
 
+
   // Get all the movies from the favourite list of the user. 
   let favoriteMovies = movies.filter((m) => user.FavoriteMovies.includes(m._id));
   console.log(favoriteMovies);
 
-  // SHOW USER INFO
-
   // UPDATE THE USER PROFILE
-  const handleSubmit = (event) => {
+  const userUpdate = (event) => {
     event.preventDefault();
 
     const data = {
@@ -37,10 +36,7 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
       if (response.ok) {
         alert("Profile updated successfully");
         return response.json();
-        // setPassword(response.json().Password);
-        // setBirthday(response.json().Birthday);
-        // setEmail(response.json().Email);
-        //window.location.reload();
+        
       } else {
         alert("Profile updated failed");
       }
@@ -70,7 +66,7 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
       if (response.ok) {
         setUser(null);
         localStorage.clear();
-        alert("You account has been deleted sucessfully");
+        alert("Your account has been deleted sucessfully");
         window.location.replace("/login");
       } else {
         alert("Something went wrong!");
@@ -83,7 +79,7 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
   return (
     <Container>
       <Row>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={userUpdate}>
           <Form.Group controlId="formUsername">
             <Form.Label>Username</Form.Label>
             <Form.Control
@@ -136,7 +132,7 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
 
       <Row className="mt-3">
           <Col md={5}>
-            <Button className="text-light" onClick={handleSubmit} variant="primary" type="submit">Update</Button>         
+            <Button className="text-light" onClick={userUpdate} variant="primary" type="submit">Update</Button>         
             <Button className="mx-3 text-light" onClick={deleteAccount} variant="danger" >Delete Account</Button>
           </Col>
         </Row>
@@ -146,7 +142,10 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
           favoriteMovies.map((movie) => {
             return (
               <Col className="mb-4" key={movie._id} md={3} >
-                <MovieCard movie={movie} />
+                <MovieCard 
+                user={user}
+                movie={movie}
+                token={token} />
               </Col>
             );
           })

@@ -1,15 +1,63 @@
 // There two props in this code: One object(book) and one function(onBookClick)
-
 // Here We import the PropType library
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropType from "prop-types";
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 // Destructure of the props
-export const MovieCard = ({ movie }) => { 
-  const handleAddFavourite =() => {
+export const MovieCard = ({ user, token, movie, setUser = () => { } }) => {
 
+  function isFav() {
+    return user.FavoriteMovies.includes(movie._id)
+  }
+
+  // ADD MOVIE TO FAVORITE LIST
+  const addToFavoriteList = () => {
+    fetch(`https://moviesflix-99590597ee12.herokuapp.com/users/${user.Username}/movies/${movie._id}`, {
+      method: "POST", headers: { Authorization: `Bearer ${token}` }
+    }).then((response) => {
+      if (response.ok) {
+        alert("The movie was added to you favourite list!")
+        // console.log(user.Username);
+        // console.log(response);
+        return response.json();
+      } else {
+        console.log("Failed to update your list");
+      }
+    })
+      .then((data) => {
+        localStorage.setItem("user", JSON.stringify(data));   // Update the LocalStorage user information
+        setUser(data);                                        // Update the user object with the new movie list
+        console.log(movie);
+        location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  };
+
+  // REMOVE MOVIE FROM FAVORITE LIST
+  const removeFromFavoriteList = () => {
+    fetch(`https://moviesflix-99590597ee12.herokuapp.com/users/${user.Username}/movies/${movie._id}`, {
+      method: "DELETE", headers: { Authorization: `Bearer ${token}` }
+    }).then((response) => {
+      if (response.ok) {
+        alert("The movie was removed from you favourite list!")
+        console.log(user.Username);
+        console.log(response);
+        return response.json();
+      } else {
+        console.log("Failed to remove the movie from your favourite list!");
+      }
+    })
+      .then((data) => {
+        localStorage.setItem("user", JSON.stringify(data));   // Update the LocalStorage user information
+        setUser(data);                                        // Update the user object with the new movie list
+      })
+      .catch((error) => {
+        console.log(error);
+      })
   };
 
   return (
@@ -21,7 +69,15 @@ export const MovieCard = ({ movie }) => {
         <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
           <Button variant="link">Open</Button>
         </Link>
-        <Button variant="link">Add to my List</Button>
+        <>{
+          isFav() ? (
+            <Button onClick={removeFromFavoriteList} variant="link">Delete from List</Button>
+
+          ) : (
+            <Button onClick={addToFavoriteList} variant="link">Add to my List</Button>
+          )
+        }
+        </>
       </Card.Body>
     </Card>
   );
@@ -37,5 +93,5 @@ MovieCard.propTypes = {
     Title: PropType.string.isRequired, // propType is working
     ImagePath: PropType.string.isRequired, // propType is working
     author: PropType.string // Why this propType is not working?
-  }).isRequired 
+  }).isRequired
 };
