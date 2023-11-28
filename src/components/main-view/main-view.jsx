@@ -100,7 +100,7 @@ export const MainView = () => {
                   user={user}
                   token={token}
                   movies={movies}
-                  setUser={setUser}   // Clarify this
+                  setUser={setUser}
                 />
               </>
             }

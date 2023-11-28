@@ -39,7 +39,6 @@ export const MovieCard = ({ user, token, movie, setUser = () => { } }) => {
 
   // REMOVE MOVIE FROM FAVORITE LIST
   const removeFromFavoriteList = () => {
-
     fetch(`https://moviesflix-99590597ee12.herokuapp.com/users/${user.Username}/movies/${movie._id}`, {
       method: "DELETE", headers: { Authorization: `Bearer ${token}` }
     }).then((response) => {
@@ -76,11 +75,9 @@ export const MovieCard = ({ user, token, movie, setUser = () => { } }) => {
 
           ) : (
             <Button onClick={addToFavoriteList} variant="link">Add to my List</Button>
-
           )
         }
         </>
-
       </Card.Body>
     </Card>
   );
