@@ -36,7 +36,6 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
       if (response.ok) {
         alert("Profile updated successfully");
         return response.json();
-        
       } else {
         alert("Profile updated failed");
       }
@@ -127,25 +126,25 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
               placeholder="Birthday"
             />
           </Form.Group>
-          </Form>       
+        </Form>
       </Row>
 
       <Row className="mt-3">
-          <Col md={5}>
-            <Button className="text-light" onClick={userUpdate} variant="primary" type="submit">Update</Button>         
-            <Button className="mx-3 text-light" onClick={deleteAccount} variant="danger" >Delete Account</Button>
-          </Col>
-        </Row>
+        <Col md={5}>
+          <Button className="text-light" onClick={userUpdate} variant="primary" type="submit">Update</Button>
+          <Button className="mx-3 text-light" onClick={deleteAccount} variant="danger" >Delete Account</Button>
+        </Col>
+      </Row>
 
       <Row className="mt-3 justify-content-md-center align-items-center">
         {
           favoriteMovies.map((movie) => {
             return (
               <Col className="mb-4" key={movie._id} md={3} >
-                <MovieCard 
-                user={user}
-                movie={movie}
-                token={token} />
+                <MovieCard
+                  user={user}
+                  movie={movie}
+                  token={token} />
               </Col>
             );
           })

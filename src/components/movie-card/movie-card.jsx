@@ -53,7 +53,8 @@ export const MovieCard = ({ user, token, movie, setUser = () => { } }) => {
     })
       .then((data) => {
         localStorage.setItem("user", JSON.stringify(data));   // Update the LocalStorage user information
-        setUser(data);                                        // Update the user object with the new movie list
+        setUser(data);
+        location.reload();                                       // Update the user object with the new movie list
       })
       .catch((error) => {
         console.log(error);
