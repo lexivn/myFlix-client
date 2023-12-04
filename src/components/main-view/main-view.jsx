@@ -23,6 +23,9 @@ export const MainView = () => {
   // "selectedMovie" as a flag.
   // const [selectedMovie, setSelectedMovie] = useState(null);
 
+  const [search, setSearch] = useState("");
+  const [filteredMovies, setFilteredMovies] = useState([]);
+
   useEffect(() => {
     if (!token) {
       return;
@@ -44,16 +47,32 @@ export const MainView = () => {
       });
   }, [token]);
 
+  // 
+  const getSearchedMovies = (arr, query) => {
+    return arr.filter((movie) => {
+      return movie.Title.toLowerCase().includes(query.toLowerCase());
+    });
+  };
+  console.log(getSearchedMovies(movies, search));
+
+  useEffect(() => {
+    setFilteredMovies(getSearchedMovies(movies, search));
+  }, [search, movies]);
+
+
   return (
     <BrowserRouter>
       <NavigationBar
         user={user}
         movies={movies}
+        search={search}
+        setSearch={setSearch}
         onLoggedOut={() => {
           setUser(null);
           setToken(null);
           localStorage.clear();
         }}
+
       />
       <Row className="justify-content-md-center">
         <Routes>
@@ -133,16 +152,17 @@ export const MainView = () => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <>
-                    {movies.map((movie) => (
-                      <Col className="mb-4" key={movie._id} md={3}>
-                        <MovieCard
-                          movie={movie}
-                          user={user}
-                          token={token}
-                          setUser={setUser}
-                        />
-                      </Col>
-                    ))}
+                    {
+                     filteredMovies.map((movie) => (
+                          <Col className="mb-4" key={movie._id} md={3}>
+                            <MovieCard
+                              movie={movie}
+                              user={user}
+                              token={token}
+                              setUser={setUser}
+                            />
+                          </Col>
+                        ))}
                   </>
                 )}
               </>
