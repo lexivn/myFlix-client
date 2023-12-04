@@ -2,6 +2,8 @@ import { useParams } from "react-router";
 import { Link, useNavigate } from "react-router-dom";
 import { Card, Placeholder, Button, Col, Container, Row } from "react-bootstrap";
 import "./movie-view.scss";
+import { useState } from "react";
+import { MovieCard } from "../movie-card/movie-card";
 
 export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
@@ -44,6 +46,7 @@ export const MovieView = ({ movies }) => {
   // );
 
   return (
+    <>
     <div className="d-flex justify-content-around">
       <Card style={{ width: '24rem' }}>
         <Card.Img variant="top" src={movie.ImagePath} />
@@ -61,6 +64,28 @@ export const MovieView = ({ movies }) => {
 
         </Card.Body>
       </Card>
+     
     </div>
+
+    <hr width={100} />
+    <h1>Other {movie.Genre.Name} movies</h1>
+      {
+
+    movies.filter(x=>x.Genre.Name == movie.Genre.Name).map(x=> 
+      <Card>
+      <Card.Img variant="top" src={x.ImagePath} width={50} height={200} />
+      <Card.Body>
+        <Card.Title>{x.Title}</Card.Title>
+        <Card.Text>{x.Director.Name}</Card.Text>
+        </Card.Body>
+        <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
+          <Button variant="link">Open</Button>
+        </Link>
+        </Card>
+    )
+
+      }
+
+    </>
   );
 };
