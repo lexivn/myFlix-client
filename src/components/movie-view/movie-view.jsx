@@ -18,7 +18,8 @@ export const MovieView = ({ movies }) => {
     <Container>
       <Row>
         <Col>
-          <Card className="border-0 moviePoster mx-auto">
+          {/* <Card className="border-0 moviePoster mx-auto"> */}
+          <Card>
             <Card.Img src={movie.ImagePath} width={100} />
           </Card>
         </Col>
@@ -27,9 +28,9 @@ export const MovieView = ({ movies }) => {
             <Card.Body>
               <Card.Title>{movie.Title}</Card.Title>
               <Card.Text>
-                <p> <strong>Description: </strong>{movie.Description}</p>
-                <p> <strong>{movie.Genre.Name}: </strong>{movie.Genre.Description}</p>
-                <p> <strong>Director: </strong>{movie.Director.Name}</p>
+                <p> <strong>Description: </strong>{movie.Description}</p> 
+                <p> <strong>{movie.Genre.Name}: </strong>{movie.Genre.Description}</p>                
+                <p> <strong>Director: </strong>{movie.Director.Name}</p>                
                 <p> <strong>Biography: </strong>{movie.Director.Bio}</p>
               </Card.Text>
               <Link to={navigate(-1)}>
