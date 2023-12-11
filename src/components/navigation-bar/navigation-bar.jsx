@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Link } from "react-router-dom";
 
-export const NavigationBar = ({ user, onLoggedOut, search, setSearch }) => {
+export const NavigationBar = ({ user, onLoggedOut }) => {
 
   return (
     <Navbar bg="light" expand="lg">
@@ -37,18 +37,7 @@ export const NavigationBar = ({ user, onLoggedOut, search, setSearch }) => {
                 </Nav.Link>
                 <Nav.Link as={Link} to="/login" onClick={onLoggedOut}>
                   Logout
-                </Nav.Link>
-                <Form className="d-flex navbar-style">
-                  <Form.Control
-                    onChange={(e) => {
-                      setSearch(e.target.value);
-                    }}
-                    type="search"
-                    placeholder="Search"
-                    className="me-2"
-                    aria-label="Search"
-                  />                  
-                </Form>
+                </Nav.Link>                
               </>
             )}
           </Nav>
