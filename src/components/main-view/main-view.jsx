@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-// Importing a component into another (MovieCard -> MainView)
 import { MovieCard } from "../movie-card/movie-card";
-// Importain MovieView component into the MainView
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../singup-view/signup-view";
@@ -10,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { ProfileView } from "../profile-view/profile-view";
+import { MovieList } from "../movie-list/movie-list";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -23,8 +22,9 @@ export const MainView = () => {
   // "selectedMovie" as a flag.
   // const [selectedMovie, setSelectedMovie] = useState(null);
 
-  const [search, setSearch] = useState("");
-  const [filteredMovies, setFilteredMovies] = useState([]);
+  // Using useEffect is Best Practive to handle Movie Filters
+  // const [search, setSearch] = useState("");
+  //  const [filteredMovies, setFilteredMovies] = useState([]);
 
   useEffect(() => {
     if (!token) {
@@ -47,32 +47,29 @@ export const MainView = () => {
       });
   }, [token]);
 
-  // 
-  const getSearchedMovies = (arr, query) => {
-    return arr.filter((movie) => {
-      return movie.Title.toLowerCase().includes(query.toLowerCase());
-    });
-  };
-  console.log(getSearchedMovies(movies, search));
+  // Using useEffect is Best Practive to handle Movie Filters
+  // const getSearchedMovies = (arr, query) => {
+  //   return arr.filter((movie) => {
+  //     return movie.Title.toLowerCase().includes(query.toLowerCase());
+  //   });
+  // };
+  // console.log(getSearchedMovies(movies, search));
 
-  useEffect(() => {
-    setFilteredMovies(getSearchedMovies(movies, search));
-  }, [search, movies]);
+  // useEffect(() => {
+  //   setFilteredMovies(getSearchedMovies(movies, search));
+  // }, [search, movies]);
 
 
   return (
     <BrowserRouter>
-      <NavigationBar
+      <NavigationBar 
         user={user}
         movies={movies}
-        search={search}
-        setSearch={setSearch}
         onLoggedOut={() => {
           setUser(null);
           setToken(null);
           localStorage.clear();
         }}
-
       />
       <Row className="justify-content-md-center">
         <Routes>
@@ -88,7 +85,6 @@ export const MainView = () => {
                   </Col>
                 )}
               </>
-
             }
           />
 
@@ -148,23 +144,17 @@ export const MainView = () => {
               <>
                 {!user ? (
                   <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
                 ) : (
                   <>
-                    {
-                     filteredMovies.map((movie) => (
-                          <Col className="mb-4" key={movie._id} md={3}>
-                            <MovieCard
-                              movie={movie}
-                              user={user}
-                              token={token}
-                              setUser={setUser}
-                            />
-                          </Col>
-                        ))}
+                    <MovieList
+                      movies={movies}
+                      user={user}
+                      token={token}
+                      setUser={setUser}
+                    />
                   </>
-                )}
+                )
+                }
               </>
             }
           />
