@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieFilter } from "../movie-filter/movie-filter";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-export const MovieList = ({ user, token, movies, setUser = () => { } }) => {
+// export const MovieList = ({ user, token, movies, setUser = () => { } }) => {
+export const MovieList = ({ user, token, setUser = () => { } }) => {
+  const movies = useSelector((state) => state.movies.list);
   const [search, setSearch] = useState("");
-  
-  console.log("Movies on the MovieList", movies, movies.length);
+
+  //console.log("Movies on the MovieList", movies, movies.length);
 
   const handleFilterChange = (newFilter) => {
     setSearch(newFilter);

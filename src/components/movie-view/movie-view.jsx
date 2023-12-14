@@ -2,9 +2,14 @@ import { useParams } from "react-router";
 import { Link, useNavigate } from "react-router-dom";
 import { Card, Placeholder, Button, Col, Container, Row } from "react-bootstrap";
 import "./movie-view.scss";
+import { useSelector } from "react-redux";
 
-export const MovieView = ({ movies }) => {
-  const { movieId } = useParams();
+// export const MovieView = ({ movies }) => {
+export const MovieView = () => {
+  const { movieId } = useParams();  
+  const movies = useSelector((state) => state.movies.list);
+
+ 
   const movie = movies.find((b) => b._id === movieId);
   console.log("What am I getting here: ", movie);
   const navigate = useNavigate();
@@ -28,9 +33,9 @@ export const MovieView = ({ movies }) => {
             <Card.Body>
               <Card.Title>{movie.Title}</Card.Title>
               <Card.Text>
-                <p> <strong>Description: </strong>{movie.Description}</p> 
-                <p> <strong>{movie.Genre.Name}: </strong>{movie.Genre.Description}</p>                
-                <p> <strong>Director: </strong>{movie.Director.Name}</p>                
+                <p> <strong>Description: </strong>{movie.Description}</p>
+                <p> <strong>{movie.Genre.Name}: </strong>{movie.Genre.Description}</p>
+                <p> <strong>Director: </strong>{movie.Director.Name}</p>
                 <p> <strong>Biography: </strong>{movie.Director.Bio}</p>
               </Card.Text>
               <Link to={navigate(-1)}>
