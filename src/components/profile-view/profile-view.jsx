@@ -2,12 +2,16 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { Row, Col, Container, Form, Button } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
-export const ProfileView = ({ user, token, movies, setUser }) => {
+// export const ProfileView = ({ user, token, movies, setUser }) => {
+export const ProfileView = ({ user, token, setUser }) => {
   const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState(user.Password);
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthday] = useState(user.Birthday);
+
+  const movies = useSelector((state) => state.movies.list);
 
 
   // Get all the movies from the favourite list of the user. 

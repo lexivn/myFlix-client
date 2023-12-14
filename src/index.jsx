@@ -10,14 +10,19 @@ import { MainView } from "./components/main-view/main-view";
 // Import statement to indicate that you need to bundle `./index.scss`
 import "./index.scss";
 import Container from 'react-bootstrap/Container';
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 // Main component (will eventually use all the others)
 const MyFlixApplication = () => {
-  return (  
-    <Container /*style={{border: "1px solid red"}}*/>
-       <MainView /> {/* Returning the MainView component using the short way. */}
-    </Container>    
-  );  
+  return (
+    <Provider store={store} >
+      <Container /*style={{border: "1px solid red"}}*/>
+        <MainView /> {/* Returning the MainView component using the short way. */}
+      </Container>
+    </Provider>
+
+  );
 };
 
 // Finds the root of your app

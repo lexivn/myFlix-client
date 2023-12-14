@@ -10,14 +10,20 @@ import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { ProfileView } from "../profile-view/profile-view";
 import { MovieList } from "../movie-list/movie-list";
 
+import { useSelector, useDispatch } from "react-redux";
+import { setMovies } from "../../redux/reducers/movies";
+
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
 
   const [user, setUser] = useState(storedUser ? storedUser : null);
+  const movies = useSelector((state) => state.movies);
+  const dispatch = useDispatch();
+  
   const [token, setToken] = useState(storedToken ? storedToken : null);
-
-  const [movies, setMovies] = useState([]);
+ 
+  //const [movies, setMovies] = useState([]);
   // To determine whether to render a specific part of the UI (MovieView) in the MainView component, you’ll add a new state
   // "selectedMovie" as a flag.
   // const [selectedMovie, setSelectedMovie] = useState(null);
@@ -42,7 +48,8 @@ export const MainView = () => {
           // map is reppresenting the index
           return doc;
         });
-        setMovies(moviesFromApi);
+        // setMovies(moviesFromApi);
+        dispatch(setMovies(moviesFromApi));
 
       });
   }, [token]);
@@ -131,7 +138,8 @@ export const MainView = () => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <Col md={8}>
-                    <MovieView movies={movies} />
+                    {/* <MovieView movies={movies} /> */}
+                    <MovieView />
                   </Col>
                 )}
               </>
