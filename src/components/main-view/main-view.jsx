@@ -18,11 +18,11 @@ export const MainView = () => {
   const storedToken = localStorage.getItem("token");
 
   const [user, setUser] = useState(storedUser ? storedUser : null);
-  const movies = useSelector((state) => state.movies);
+  const movies = useSelector((state) => state.movies.list);
   const dispatch = useDispatch();
-  
+
   const [token, setToken] = useState(storedToken ? storedToken : null);
- 
+
   //const [movies, setMovies] = useState([]);
   // To determine whether to render a specific part of the UI (MovieView) in the MainView component, you’ll add a new state
   // "selectedMovie" as a flag.
@@ -54,22 +54,9 @@ export const MainView = () => {
       });
   }, [token]);
 
-  // Using useEffect is Best Practive to handle Movie Filters
-  // const getSearchedMovies = (arr, query) => {
-  //   return arr.filter((movie) => {
-  //     return movie.Title.toLowerCase().includes(query.toLowerCase());
-  //   });
-  // };
-  // console.log(getSearchedMovies(movies, search));
-
-  // useEffect(() => {
-  //   setFilteredMovies(getSearchedMovies(movies, search));
-  // }, [search, movies]);
-
-
   return (
     <BrowserRouter>
-      <NavigationBar 
+      <NavigationBar
         user={user}
         movies={movies}
         onLoggedOut={() => {
