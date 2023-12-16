@@ -1,0 +1,17 @@
+.postcard {
+  flex-wrap: wrap;
+  display: flex;
+  box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
+  border-radius: 10px;
+  margin: 0 0 2rem 0;
+  overflow: hidden;
+  position: relative;
+  color: #ffffff;
+}
+
+.postcard .postcard__text {
+  padding: 1.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}

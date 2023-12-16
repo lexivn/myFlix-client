@@ -23,11 +23,6 @@ export const MainView = () => {
 
   const [token, setToken] = useState(storedToken ? storedToken : null);
 
-  //const [movies, setMovies] = useState([]);
-  // To determine whether to render a specific part of the UI (MovieView) in the MainView component, you’ll add a new state
-  // "selectedMovie" as a flag.
-  // const [selectedMovie, setSelectedMovie] = useState(null);
-
   // Using useEffect is Best Practive to handle Movie Filters
   // const [search, setSearch] = useState("");
   //  const [filteredMovies, setFilteredMovies] = useState([]);
@@ -124,8 +119,7 @@ export const MainView = () => {
                 ) : movies.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
-                  <Col md={8}>
-                    {/* <MovieView movies={movies} /> */}
+                  <Col md={8} style={{ border: "1px solid black" }}>                  
                     <MovieView />
                   </Col>
                 )}

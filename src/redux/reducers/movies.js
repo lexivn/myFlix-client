@@ -1,7 +1,9 @@
 // This file is going to define an action
 // to store the books from the API
 
+// The movies Reducer: This file is going to define an action to store the books from the API
 import { createSlice } from "@reduxjs/toolkit";
+
 const moviesSlice = createSlice({
   name: "movies",
   initialState: {
