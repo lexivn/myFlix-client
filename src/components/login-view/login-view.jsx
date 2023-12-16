@@ -44,32 +44,7 @@ export const LoginView = ({ onLoggedIn }) => {
 
   return (
     // This callback tells the Login API to validate user and password
-    // <form onSubmit={handleSubmit}>
-    //   <label>
-    //     Username:
-    //     <input
-    //       type="text"
-    //       value={username}
-    //       onChange={(e) => setUsername(e.target.value)}
-    //       required // Form Validation
-    //       minLength="5"
-    //       placeholder="Username"
-    //     />
-    //   </label>
-    //   <label>
-    //     Password:
-    //     <input
-    //       type="password"
-    //       value={password}
-    //       onChange={(e) => setPassword(e.target.value)}
-    //       required // Form Validation
-    //       placeholder="Password"
-    //     />
-    //   </label>
-    //   <button type="submit">Submit</button>
-    // </form>
-
-    <Form onSubmit={handleSubmit}>
+  <Form onSubmit={handleSubmit}>
       <Form.Group conttrolId="formUsername">
         <Form.Label>Username:</Form.Label>
         <Form.Control
