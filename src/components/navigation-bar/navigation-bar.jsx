@@ -8,7 +8,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
     <Navbar bg="light" expand="lg">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          <h1 className="display-6 me-3 lead text-success">MoboFlix</h1>
+          <h1 className="display-6 lead text-success">MoboFlix</h1>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
