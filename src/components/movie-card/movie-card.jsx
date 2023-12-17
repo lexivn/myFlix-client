@@ -60,7 +60,7 @@ export const MovieCard = ({ user, token, movie, setUser = () => { } }) => {
   };
 
   return (
-    <Card className="h-100 " >
+    <Card className="h-100" >
       <Card.Img variant="top" src={movie.ImagePath} />
       <Card.Body>
         <Card.Title>{movie.Title}</Card.Title>
