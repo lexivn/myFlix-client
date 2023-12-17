@@ -17,7 +17,7 @@ import { store } from "./redux/store";
 const MyFlixApplication = () => {
   return (
     <Provider store={store} >  {/* Make the store available to your React App */}
-      <Container style={{border: "1px solid red"}}>
+      <Container /*style={{border: "1px solid red"}}*/>
         <MainView /> {/* Returning the MainView component using the short way. */}
       </Container>
     </Provider>

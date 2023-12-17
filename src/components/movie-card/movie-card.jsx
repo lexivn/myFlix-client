@@ -2,9 +2,8 @@
 // Here We import the PropType library
 import React, { useEffect, useState } from "react";
 import PropType from "prop-types";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Button, Card} from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "./movie-card.scss";
 
 // Destructure of the props
 export const MovieCard = ({ user, token, movie, setUser = () => { } }) => {
@@ -61,7 +60,7 @@ export const MovieCard = ({ user, token, movie, setUser = () => { } }) => {
   };
 
   return (
-    <Card className="h-100 postcard" >
+    <Card className="h-100 " >
       <Card.Img variant="top" src={movie.ImagePath} />
       <Card.Body>
         <Card.Title>{movie.Title}</Card.Title>

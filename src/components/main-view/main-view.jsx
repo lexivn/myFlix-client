@@ -119,7 +119,7 @@ export const MainView = () => {
                 ) : movies.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
-                  <Col md={8} style={{ border: "1px solid black" }}>                  
+                  <Col md={8} /*style={{ border: "1px solid black" }}*/>                  
                     <MovieView />
                   </Col>
                 )}

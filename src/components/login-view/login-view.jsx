@@ -28,7 +28,7 @@ export const LoginView = ({ onLoggedIn }) => {
         console.log("Login response: ", data);
         if (data.user) {
           // Data storage across browser sessions
-          localStorage.setItem("user", JSON.stringify(data.user));         
+          localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);
           localStorage.setItem("user_id", data.user._id);
           localStorage.setItem("Username", data.user.Username);
@@ -44,8 +44,8 @@ export const LoginView = ({ onLoggedIn }) => {
 
   return (
     // This callback tells the Login API to validate user and password
-  <Form onSubmit={handleSubmit}>
-      <Form.Group conttrolId="formUsername">
+    <Form onSubmit={handleSubmit}>
+      <Form.Group className="mb-3" conttrolId="formUsername">
         <Form.Label>Username:</Form.Label>
         <Form.Control
           type="text"
@@ -57,21 +57,20 @@ export const LoginView = ({ onLoggedIn }) => {
         />
       </Form.Group>
 
-      <Form.Group controlId="formPassword">
+      <Form.Group className="mb-3" controlId="formPassword">
         <Form.Label>Password:</Form.Label>
         <Form.Control
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        required
-        placeholder="Password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          placeholder="Password"
         />
       </Form.Group>
 
       <Button variant="primary" type="submit">
         Submit
       </Button>
-
 
     </Form>
   );

@@ -36,95 +36,54 @@ export const SignupView = () => {
   };
 
   return (
-    // <form onSubmit={handleSubmit}>
-    //   <label>
-    //     Username:
-    //     <input
-    //       type="text"
-    //       value={username}
-    //       onChange={(e) => setUsername(e.target.value)}
-    //       required
-    //       minLength="3"
-    //     />
-    //   </label>
-    //   <label>
-    //     Password:
-    //     <input
-    //       type="password"
-    //       value={password}
-    //       onChange={(e) => setPassword(e.target.value)}
-    //       required
-    //     />
-    //   </label>
-    //   <label>
-    //     Email:
-    //     <input
-    //       type="email"
-    //       value={email}
-    //       onChange={(e) => setEmail(e.target.value)}
-    //       required
-    //     />
-    //   </label>
-    //   <label>
-    //     Birthday:
-    //     <input
-    //       type="date"
-    //       value={birthday}
-    //       onChange={(e) => setBirthday(e.target.value)}
-    //       required
-    //     />
-    //   </label>
-    //   <button type="submit">Submit</button>
-    // </form>
-
     <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="formUsername">
+      <Form.Group className="mb-3" controlId="formUsername">
         <Form.Label>Username</Form.Label>
         <Form.Control
-        type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        required
-        minLength={5}
-        placeholder="Username"
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+          minLength={5}
+          placeholder="Username"
         />
       </Form.Group>
 
-      <Form.Group controlId="formPassword">
+      <Form.Group className="mb-3" controlId="formPassword">
         <Form.Label>Password</Form.Label>
         <Form.Control
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        required
-        minLength={5}
-        placeholder="Password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          minLength={5}
+          placeholder="Password"
         />
       </Form.Group>
 
-      <Form.Group controlId="formEmail">
+      <Form.Group className="mb-3" controlId="formEmail">
         <Form.Label>Email</Form.Label>
         <Form.Control
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required        
-        placeholder="Email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          placeholder="Email"
         />
       </Form.Group>
 
-      <Form.Group controlId="formBirthday">
+      <Form.Group className="mb-3" controlId="formBirthday">
         <Form.Label>Birthday</Form.Label>
         <Form.Control
-        type="date"
-        value={birthday}
-        onChange={(e) => setBirthday(e.target.value)}
-        required
-        minLength={5}
-        placeholder="Birthday"
+          type="date"
+          value={birthday}
+          onChange={(e) => setBirthday(e.target.value)}
+          required
+          minLength={5}
+          placeholder="Birthday"
         />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button className="mb-3" variant="primary" type="submit">
         Submit
       </Button>
     </Form>
