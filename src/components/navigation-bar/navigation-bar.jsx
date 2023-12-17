@@ -1,8 +1,5 @@
 import { useState } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
 import { Link } from "react-router-dom";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
@@ -11,7 +8,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
     <Navbar bg="light" expand="lg">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          MoboFlix
+          <h1 className="display-6 lead text-success">MoboFlix</h1>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -37,7 +34,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                 </Nav.Link>
                 <Nav.Link as={Link} to="/login" onClick={onLoggedOut}>
                   Logout
-                </Nav.Link>                
+                </Nav.Link>
               </>
             )}
           </Nav>

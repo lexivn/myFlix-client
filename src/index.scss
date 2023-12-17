@@ -2,10 +2,24 @@ $primary: SeaGreen;
 $body-bg: Honeydew;
 
 // Importing Customizable Bootstrap
-@import '~bootstrap/scss/bootstrap.scss';
+@import "~bootstrap/scss/bootstrap.scss";
 
 $color: steelblue;
 
 .my-flix {
   color: $color;
+}
+
+.fullpage {
+    padding-bottom: 0;
+    margin: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
 }

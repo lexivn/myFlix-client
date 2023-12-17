@@ -18,15 +18,10 @@ export const MainView = () => {
   const storedToken = localStorage.getItem("token");
 
   const [user, setUser] = useState(storedUser ? storedUser : null);
-  const movies = useSelector((state) => state.movies);
+  const movies = useSelector((state) => state.movies.list);
   const dispatch = useDispatch();
-  
+
   const [token, setToken] = useState(storedToken ? storedToken : null);
- 
-  //const [movies, setMovies] = useState([]);
-  // To determine whether to render a specific part of the UI (MovieView) in the MainView component, you’ll add a new state
-  // "selectedMovie" as a flag.
-  // const [selectedMovie, setSelectedMovie] = useState(null);
 
   // Using useEffect is Best Practive to handle Movie Filters
   // const [search, setSearch] = useState("");
@@ -54,22 +49,9 @@ export const MainView = () => {
       });
   }, [token]);
 
-  // Using useEffect is Best Practive to handle Movie Filters
-  // const getSearchedMovies = (arr, query) => {
-  //   return arr.filter((movie) => {
-  //     return movie.Title.toLowerCase().includes(query.toLowerCase());
-  //   });
-  // };
-  // console.log(getSearchedMovies(movies, search));
-
-  // useEffect(() => {
-  //   setFilteredMovies(getSearchedMovies(movies, search));
-  // }, [search, movies]);
-
-
   return (
     <BrowserRouter>
-      <NavigationBar 
+      <NavigationBar
         user={user}
         movies={movies}
         onLoggedOut={() => {
@@ -137,8 +119,7 @@ export const MainView = () => {
                 ) : movies.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
-                  <Col md={8}>
-                    {/* <MovieView movies={movies} /> */}
+                  <Col md={8} /*style={{ border: "1px solid black" }}*/>                  
                     <MovieView />
                   </Col>
                 )}

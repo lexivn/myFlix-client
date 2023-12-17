@@ -5,26 +5,17 @@ import { MovieFilter } from "../movie-filter/movie-filter";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-// export const MovieList = ({ user, token, movies, setUser = () => { } }) => {
 export const MovieList = ({ user, token, setUser = () => { } }) => {
   const movies = useSelector((state) => state.movies.list);
-  const [search, setSearch] = useState("");
+  const filter = useSelector((state) => state.movies.filter).trim().toLowerCase();
 
-  //console.log("Movies on the MovieList", movies, movies.length);
-
-  const handleFilterChange = (newFilter) => {
-    setSearch(newFilter);
-  };
-
-  const filteredMovies = movies.filter((movie) =>
-    movie.Title.toLowerCase().includes(search.trim().toLowerCase())
-  );
+  const filteredMovies = movies.filter((movie) => movie.Title.toLowerCase().includes(filter));
 
   return (
     <>
       <Row>
         <Col className="m-4">
-          <MovieFilter onFilterChange={handleFilterChange} />
+          <MovieFilter />
         </Col>
       </Row>
       <Row>

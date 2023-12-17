@@ -2,7 +2,7 @@
 // Here We import the PropType library
 import React, { useEffect, useState } from "react";
 import PropType from "prop-types";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Button, Card} from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 // Destructure of the props
@@ -19,8 +19,6 @@ export const MovieCard = ({ user, token, movie, setUser = () => { } }) => {
     }).then((response) => {
       if (response.ok) {
         alert("The movie was added to you favourite list!")
-        // console.log(user.Username);
-        // console.log(response);
         return response.json();
       } else {
         console.log("Failed to update your list");
@@ -54,7 +52,7 @@ export const MovieCard = ({ user, token, movie, setUser = () => { } }) => {
       .then((data) => {
         localStorage.setItem("user", JSON.stringify(data));   // Update the LocalStorage user information
         setUser(data);
-        location.reload();                                       // Update the user object with the new movie list
+        location.reload();                                    // Update the user object with the new movie list
       })
       .catch((error) => {
         console.log(error);
@@ -62,7 +60,7 @@ export const MovieCard = ({ user, token, movie, setUser = () => { } }) => {
   };
 
   return (
-    <Card className="h-100">
+    <Card className="h-100" >
       <Card.Img variant="top" src={movie.ImagePath} />
       <Card.Body>
         <Card.Title>{movie.Title}</Card.Title>
