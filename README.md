@@ -12,14 +12,14 @@ In the previous Achievement, you built the server-side for a movie app called my
 The code you write impacts both your users and your fellow developers. As you work through this achievement, you’ll need to consider, among other things, the readability and maintenance of your codebase, and the design and usability of your app.
 By the end of the Achievement, you’ll have a complete web app (client-side and server-side) built using full-stack JavaScript technologies, which you can then showcase in your portfolio. This project will demonstrate your mastery of full-stack JavaScript development. The complete tech stack you’ll master is known as the MERN (MongoDB, Express, React, and Node.js) stack.
 
-Design Criteria
+## Design Criteria
 
 ## User Stories
 
 - As a user, I want to be able to access information about movies so that I can learn more about movies I’ve watched or am interested in.
 - As a user, I want to be able to create a profile so I can save data about my favorite movies.
 
-Features & Requirements
+## Features & Requirements
 
 The following feature requirements were extracted from the user stories just listed. Please note.
 
@@ -27,70 +27,70 @@ The following feature requirements were extracted from the user stories just lis
 
 ### Main view
 
-● Returns ALL movies to the user (each movie item with an image, title, and description)
-● Filtering the list of movies with a “search” feature
-● Ability to select a movie for more details
-● Ability to log out
-● Ability to navigate to Profile view
+- Returns ALL movies to the user (each movie item with an image, title, and description)
+- Filtering the list of movies with a “search” feature
+- Ability to select a movie for more details
+- Ability to log out
+- Ability to navigate to Profile view
 
 ### Single Movie view
 
-● Returns data (description, genre, director, image) about a single movie to the user
-● Allows users to add a movie to their list of favorites
+- Returns data (description, genre, director, image) about a single movie to the user
+- Allows users to add a movie to their list of favorites
 
 ### Login view
 
-● Allows users to log in with a username and password
+- Allows users to log in with a username and password
 
 ### Signup view
 
-● Allows new users to register (username, password, email, date of birth)
+- Allows new users to register (username, password, email, date of birth)
 
 ### Profile view
 
-● Displays user registration details
-● Allows users to update their info (username, password, email, date of birth)
-● Displays favorite movies
-● Allows users to remove a movie from their list of favorites
-● Allows existing users to deregister
+- Displays user registration details
+- Allows users to update their info (username, password, email, date of birth)
+- Displays favorite movies
+- Allows users to remove a movie from their list of favorites
+- Allows existing users to deregister
 
 ### Optional Views & Features:
 
-Actors view
+#### Actors view
 
-● Allows users to view information about different actors
+- Allows users to view information about different actors
 
-### Genre view
+#### Genre view
 
-● Returns data about a genre, with a name and description
-● Displays example movies
+- Returns data about a genre, with a name and description
+- Displays example movies
 
-### Director view
+#### Director view
 
-● Returns data about a director (name, bio, birth year, death year)
-● Displays example movies from the director
+- Returns data about a director (name, bio, birth year, death year)
+- Displays example movies from the director
 
-### Single Movie view (optional features)
+#### Single Movie view (optional features)
 
-● Allow users to see which actors star in which movies
-● Allow users to view more information about different movies, such as the release date and the movie rating
-● Allow users to access different movie information, such as genre description and director bio, without leaving the view (e.g., tooltips)
-● Allow users to share a movie
-● Display a list of related or similar movies
+- Allow users to see which actors star in which movies
+- Allow users to view more information about different movies, such as the release date and the movie rating
+- Allow users to access different movie information, such as genre description and director bio, without leaving the view (e.g., tooltips)
+- Allow users to share a movie
+- Display a list of related or similar movies
 
-Main view (optional features)
+#### Main view (optional features)
 
-● Allow users to sort movies based on different criteria Profile, Single Movie, and Main views (optional features)
-● Allow users to create a “To Watch” list in addition to their “Favorite Movies” list
+- Allow users to sort movies based on different criteria Profile, Single Movie, and Main views (optional features)
+- Allow users to create a “To Watch” list in addition to their “Favorite Movies” list
 
 ## Technical Requirements
 
-● The application must be a single-page application (SPA)
-● The application must use state routing to navigate between views and share URLs
-● The application must give users the option to filter movies using a “search” feature
-● The application must use Parcel as its build tool
-● The application must be written using the React library and in ES2015+
-● The application must use Bootstrap as a UI library for styling and responsiveness
-● The application must contain function components
-● The application must be hosted online
-● The application may use React Redux for state management of at least one feature (i.e., filtering movies)
+- The application must be a single-page application (SPA)
+- The application must use state routing to navigate between views and share URLs
+- The application must give users the option to filter movies using a “search” feature
+- The application must use Parcel as its build tool
+- The application must be written using the React library and in ES2015+
+- The application must use Bootstrap as a UI library for styling and responsiveness
+- The application must contain function components
+- The application must be hosted online
+- The application may use React Redux for state management of at least one feature (i.e., filtering movies)
