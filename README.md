@@ -14,16 +14,16 @@ By the end of the Achievement, you’ll have a complete web app (client-side and
 
 ## 3. Design Criteria
 
-### User Stories
+### 3.1 User Stories
 
 - As a user, I want to be able to access information about movies so that I can learn more about movies I’ve watched or am interested in.
 - As a user, I want to be able to create a profile so I can save data about my favorite movies.
 
-### Features & Requirements
+### 3.2 Features & Requirements
 
 The following feature requirements were extracted from the user stories just listed. Please note.
 
-### Essential Views & Features:
+### 3.2.1 Essential Views & Features:
 
 #### Main view
 
@@ -83,7 +83,7 @@ The following feature requirements were extracted from the user stories just lis
 - Allow users to sort movies based on different criteria Profile, Single Movie, and Main views (optional features)
 - Allow users to create a “To Watch” list in addition to their “Favorite Movies” list
 
-### Technical Requirements
+### 3.2.2 Technical Requirements
 
 - The application must be a single-page application (SPA)
 - The application must use state routing to navigate between views and share URLs
