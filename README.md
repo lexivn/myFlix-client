@@ -60,3 +60,5 @@ Welcome to MovieApiClient, a React-based portfolio project representing my exper
 </div>
 
 ## License
+
+This project is open-source and available under the [MIT License](LICENSE).
